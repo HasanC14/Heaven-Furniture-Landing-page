@@ -13,12 +13,10 @@ export function Header() {
   const [docked, setDocked] = useState(false);
 
   useEffect(() => {
-    let lastScrollY = window.scrollY;
     const updateHeader = () => {
       const hero = document.querySelector<HTMLElement>(".denton-hero");
-      setCompact(window.innerWidth <= 950 && window.scrollY > lastScrollY && window.scrollY > 20);
+      setCompact(window.innerWidth <= 950 && window.scrollY > 20);
       setDocked(window.innerWidth > 950 && (hero ? hero.getBoundingClientRect().bottom <= 0 : window.scrollY >= window.innerHeight));
-      lastScrollY = window.scrollY;
     };
     const onResize = () => {
       if (window.innerWidth > 950) {
@@ -46,7 +44,7 @@ export function Header() {
 
   return (
     <>
-      <header className={["main-nav", compact ? "compact" : "", docked ? "docked" : ""].filter(Boolean).join(" ")}>
+      <header className={["main-nav", compact ? "compact" : "", docked ? "docked" : "", menuOpen ? "menu-open" : ""].filter(Boolean).join(" ")}>
         <div className="nav-shell">
           <Logo />
           <nav className="desktop-nav" aria-label="Main navigation">
@@ -122,7 +120,6 @@ export function Header() {
 
       <div className={menuOpen ? "mobile-menu active" : "mobile-menu"} aria-hidden={!menuOpen}>
         <div className="mobile-menu-content">
-          <div className="mobile-menu-meta"><span>Navigation index</span><span>Chattogram / BD</span></div>
           <nav aria-label="Mobile navigation">
             {navigation.map((item, index) => item.dropdown ? (
               <button type="button" key={item.label} onClick={() => setMobileSubmenu(item.label)}><small>{String(index + 1).padStart(2, "0")}</small><span>{item.label}</span><b>↗</b></button>

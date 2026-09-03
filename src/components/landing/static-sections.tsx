@@ -4,7 +4,7 @@ import { WHATSAPP_URL } from "./data";
 import { Arrow, Logo, ThemeButton } from "./ui";
 
 export function ProjectCallout() {
-  return <section className="simple-cta"><div><span>Have something particular in mind?</span><h2>Let&apos;s make room for it.</h2><ThemeButton>Talk to the studio</ThemeButton></div></section>;
+  return <section className="simple-cta"><div><div className="simple-cta-copy"><span className="section-kicker">Have something particular in mind?</span><h2>Let&apos;s make room for it.</h2></div><ThemeButton>Talk to the studio</ThemeButton></div></section>;
 }
 
 export function ShowroomCallout() {

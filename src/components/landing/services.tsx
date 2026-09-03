@@ -12,13 +12,12 @@ export function Services() {
           <ThemeButton>Begin a piece</ThemeButton>
         </div>
         <div className="service-list">
-          {services.map((service, index) => (
+          {services.map((service) => (
             <a className="service-card" href={WHATSAPP_URL} key={service.title}>
               <div className="service-card-media">
                 <Image src={service.image} alt={service.title} fill loading="eager" sizes="(max-width: 820px) 100vw, 40vw" />
               </div>
               <div className="service-card-copy">
-                <div className="service-card-meta"><small>{String(index + 1).padStart(2, "0")}</small><span>Made to measure</span></div>
                 <div className="service-card-details">
                   <h3>{service.title}</h3>
                   <p>{service.description}</p>
